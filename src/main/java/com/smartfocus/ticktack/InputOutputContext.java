@@ -19,12 +19,36 @@ public class InputOutputContext {
 
     }
 
-    public void write(String message) throws IOException {
+    public void write(String message) {
+        try {
+            outputStream.write(message.getBytes());
+            outputStream.flush();
 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public String read() {
-        return null;
+        String line = null;
+        Scanner scanner = new Scanner(inputStream);
+        while (scanner.hasNext()) {
+            line = scanner.nextLine();
+            if (line != null) {
+                break;
+            }
+        }
+        return line;
+    }
+
+    @Override
+    protected void finalize() throws Throwable {
+        if (inputStream != null) {
+            inputStream.close();
+        }
+        if (outputStream != null) {
+            outputStream.close();
+        }
     }
 
 }
