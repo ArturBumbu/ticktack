@@ -1,11 +1,17 @@
 package com.smartfocus.ticktack;
 
+import java.io.InputStream;
+import java.io.OutputStream;
+
 /**
  * Created by arthur on 13/06/16.
  */
 public class TickTackGame {
-    public TickTackGame() {
-        gameInit();
+
+    private InputOutputContext context;
+
+    public TickTackGame(InputStream in, OutputStream out) {
+        gameInit(in, out);
         do {
             playerMove();
             printBoard();
@@ -36,7 +42,14 @@ public class TickTackGame {
         System.out.println("playerMove");
     }
 
-    private void gameInit() {
-        System.out.println("gameInit");
+    private void gameInit(InputStream in, OutputStream out) {
+        this.context = new InputOutputContext(in, out);
+        askForFirstPlayerChoice();
+    }
+
+
+
+    private void askForFirstPlayerChoice() {
+        this.context.write("Please select the first player(c - for computer, h - human):");
     }
 }
