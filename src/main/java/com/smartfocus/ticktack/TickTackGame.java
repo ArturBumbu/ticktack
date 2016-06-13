@@ -7,6 +7,9 @@ import java.io.OutputStream;
  * Created by arthur on 13/06/16.
  */
 public class TickTackGame {
+    private IPlayer currentPlayer;
+    private IPlayer firstPlayer;
+    private IPlayer secondPlayer;
 
     private InputOutputContext context;
 
@@ -49,7 +52,12 @@ public class TickTackGame {
     }
 
     private void initPlayers() {
-        String firstPlayerChoice;
+        String firstPlayerChoice = readUserInput();
+        instantiatePlayers(firstPlayerChoice);
+    }
+
+    private String readUserInput() {
+        String firstPlayerChoice = null;
         boolean validCommand = false;
         while (!validCommand) {
             firstPlayerChoice = this.context.read();
@@ -60,6 +68,18 @@ public class TickTackGame {
                 context.write("Please enter a valid char: ");
             }
         }
+        return firstPlayerChoice;
+    }
+
+    private void instantiatePlayers(String firstPlayerChoice) {
+        if (firstPlayerChoice.equals("h")) {
+            firstPlayer = new HumanPlayer();
+            secondPlayer = new ComputerPlayer();
+        } else if (firstPlayerChoice.equals("c")) {
+            firstPlayer = new ComputerPlayer();
+            secondPlayer = new HumanPlayer();
+        }
+        currentPlayer = firstPlayer;
     }
 
 
