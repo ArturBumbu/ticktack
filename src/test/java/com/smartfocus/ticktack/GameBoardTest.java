@@ -39,6 +39,16 @@ public class GameBoardTest {
         checkNrBoardRows(nrLines);
     }
 
+    @Test
+    public void shouldSetBoardPositionGiven() {
+        int col = 1;
+        int row = 2;
+        CellSign cellSign = CellSign.CROSS;
+        gameBoard.setPosition(col, row, cellSign);
+        Cell cell = gameBoard.getPosition(col, row);
+        assertEquals(cellSign.getName(), cell.getSign().getName());
+    }
+
     private void checkNrBoardRows(int nrLines) {
         assertEquals(3, nrLines);
     }

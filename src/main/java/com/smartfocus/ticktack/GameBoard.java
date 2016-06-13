@@ -9,7 +9,7 @@ import java.io.OutputStream;
 public class GameBoard {
     private Cell[][] board;
     private final int GAME_SIZE = 3;
-    private InputOutputContext context;
+    private final InputOutputContext context;
     private final String DELIMITER = "|";
 
     public GameBoard(InputOutputContext context) {
@@ -22,6 +22,10 @@ public class GameBoard {
         }
     }
 
+    public InputOutputContext getContext() {
+        return context;
+    }
+
     public void printBoard() {
         for (int row = 0; row < GAME_SIZE; row++) {
             for (int col = 0; col < GAME_SIZE; col++) {
@@ -32,5 +36,13 @@ public class GameBoard {
             }
             context.write(Character.LINE_SEPARATOR);
         }
+    }
+
+    public void setPosition(int col, int row, CellSign cellSign) {
+
+    }
+
+    public Cell getPosition(int col, int row) {
+        return null;
     }
 }
