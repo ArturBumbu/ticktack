@@ -39,10 +39,10 @@ public class GameBoard {
     }
 
     public void setPosition(int col, int row, CellSign cellSign) {
-
+        board[row][col] = new Cell(row, col, cellSign);
     }
 
     public Cell getPosition(int col, int row) {
-        return null;
+        return board[row][col];
     }
 }

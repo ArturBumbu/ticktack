@@ -14,6 +14,12 @@ public class Cell {
         this.sign = CellSign.EMPTY;
     }
 
+    public Cell(int row, int col, CellSign cellSign) {
+        this.row = row;
+        this.col = col;
+        this.sign = cellSign;
+    }
+
     public CellSign getSign() {
         return sign;
     }
