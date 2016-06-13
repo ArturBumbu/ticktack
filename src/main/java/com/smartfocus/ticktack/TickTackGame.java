@@ -10,6 +10,7 @@ public class TickTackGame {
     private IPlayer currentPlayer;
     private IPlayer firstPlayer;
     private IPlayer secondPlayer;
+    private GameState currentState;
 
     private InputOutputContext context;
 
@@ -49,6 +50,7 @@ public class TickTackGame {
         this.context = new InputOutputContext(in, out);
         askForFirstPlayerChoice();
         initPlayers();
+        this.currentState = GameState.PLAYING;
     }
 
     private void initPlayers() {
