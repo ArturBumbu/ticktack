@@ -38,6 +38,12 @@ public class InputOutputContextTest {
         assertEquals(message,context.read());
     }
 
+    @Test
+    public void shouldWriteASingleByteToOutputStream(){
+        String message = "Welcome";
+        context.write(message.getBytes()[0]);
+        assertEquals(message.getBytes()[0],context.read().getBytes()[0]);
+    }
     private File createTestFile() throws IOException {
         File file = new File("tmp.bin");
         if (!file.exists()) {

@@ -29,6 +29,16 @@ public class InputOutputContext {
         }
     }
 
+    public void write(byte message) {
+        try {
+            outputStream.write(message);
+            outputStream.flush();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public String read() {
         String line = null;
         Scanner scanner = new Scanner(inputStream);

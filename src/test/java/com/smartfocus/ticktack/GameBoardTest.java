@@ -45,7 +45,8 @@ public class GameBoardTest {
 
     private void initBoard(File file) throws FileNotFoundException {
         FileOutputStream fileOutputStream = new FileOutputStream(file);
-        gameBoard = new GameBoard(fileOutputStream);
+        InputOutputContext context = new InputOutputContext(null, fileOutputStream);
+        gameBoard = new GameBoard(context);
 
     }
 
