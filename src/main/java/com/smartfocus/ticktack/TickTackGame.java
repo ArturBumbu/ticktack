@@ -45,8 +45,22 @@ public class TickTackGame {
     private void gameInit(InputStream in, OutputStream out) {
         this.context = new InputOutputContext(in, out);
         askForFirstPlayerChoice();
+        initPlayers();
     }
 
+    private void initPlayers() {
+        String firstPlayerChoice;
+        boolean validCommand = false;
+        while (!validCommand) {
+            firstPlayerChoice = this.context.read();
+            validCommand = InputChoiceValidator.validate(firstPlayerChoice);
+            if (validCommand) {
+                break;
+            } else {
+                context.write("Please enter a valid char: ");
+            }
+        }
+    }
 
 
     private void askForFirstPlayerChoice() {

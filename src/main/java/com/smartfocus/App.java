@@ -7,6 +7,6 @@ import com.smartfocus.ticktack.TickTackGame;
  */
 public class App {
     public static void main(String[] args) {
-        new TickTackGame();
+        new TickTackGame(System.in, System.out);
     }
 }
