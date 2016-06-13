@@ -12,10 +12,12 @@ public class TickTackGame {
     private IPlayer secondPlayer;
     private GameState currentState;
 
-    private InputOutputContext context;
+    private final InputOutputContext context;
 
     public TickTackGame(InputStream in, OutputStream out) {
-        gameInit(in, out);
+        this.context = new InputOutputContext(in, out);
+
+        gameInit();
         do {
             playerMove();
             printBoard();
@@ -46,8 +48,7 @@ public class TickTackGame {
         System.out.println("playerMove");
     }
 
-    private void gameInit(InputStream in, OutputStream out) {
-        this.context = new InputOutputContext(in, out);
+    private void gameInit() {
         askForFirstPlayerChoice();
         initPlayers();
         this.currentState = GameState.PLAYING;
