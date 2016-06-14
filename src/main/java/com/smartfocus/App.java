@@ -3,7 +3,7 @@ package com.smartfocus;
 import com.smartfocus.ticktack.TickTackGame;
 
 /**
- * Hello world!
+ * Tick tack console game
  */
 public class App {
     public static void main(String[] args) {
