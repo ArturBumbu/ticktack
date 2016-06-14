@@ -5,18 +5,13 @@ package com.smartfocus.ticktack;
  */
 public class Cell {
     private CellSign sign;
-    private int row;
-    private int col;
 
-    public Cell(int row, int col) {
-        this.col = col;
-        this.row = row;
+
+    public Cell() {
         this.sign = CellSign.EMPTY;
     }
 
-    public Cell(int row, int col, CellSign cellSign) {
-        this.row = row;
-        this.col = col;
+    public Cell(CellSign cellSign) {
         this.sign = cellSign;
     }
 
@@ -24,7 +19,4 @@ public class Cell {
         return sign;
     }
 
-    public void setSign(CellSign sign) {
-        this.sign = sign;
-    }
 }

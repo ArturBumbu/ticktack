@@ -19,7 +19,7 @@ public class GameBoard {
         board = new Cell[GAME_SIZE][GAME_SIZE];
         for (int row = 0; row < GAME_SIZE; ++row) {
             for (int col = 0; col < GAME_SIZE; ++col) {
-                board[row][col] = new Cell(row, col);
+                board[row][col] = new Cell();
             }
         }
     }
@@ -41,7 +41,7 @@ public class GameBoard {
     }
 
     public void setPosition(int row, int col, CellSign cellSign) {
-        board[row][col] = new Cell(row, col, cellSign);
+        board[row][col] = new Cell(cellSign);
     }
 
     public Cell getPosition(int row, int col) {
