@@ -11,13 +11,13 @@ public class HumanPlayer implements IPlayer {
     }
 
     public void doMove(GameBoard gameBoard) {
-        boolean isValidPosition = false;
+        boolean isValidInput = false;
         String userPosition = null;
         gameBoard.getContext().write("It's your turn please enter a position like [1,2]: ");
-        while (!isValidPosition) {
+        while (!isValidInput) {
             userPosition = gameBoard.getContext().read();
-            isValidPosition = HumanInputPositionValidator.validate(userPosition);
-            if (isValidPosition) {
+            isValidInput = HumanInputPositionValidator.validate(userPosition);
+            if (isValidInput) {
                 break;
             } else {
                 gameBoard.getContext().write("Please enter a valid position in format 1,2: ");

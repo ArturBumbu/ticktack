@@ -9,16 +9,16 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 /**
  * Created by arthur on 14/06/16.
  */
-public class ComputerMoverTest {
+public class BoardPositionValidatorTest {
 
     private File file;
     private GameBoard board;
-    ComputerMover computerMover;
+    private BoardPositionValidator boardPositionValidator;
 
     @Before
     public void setup() throws IOException {
@@ -27,7 +27,7 @@ public class ComputerMoverTest {
         FileOutputStream fileOutputStream = new FileOutputStream(file);
         InputOutputContext inputOutputContext = new InputOutputContext(inputStream, fileOutputStream);
         this.board = new GameBoard(inputOutputContext);
-        computerMover = new ComputerMover(this.board, new BoardPositionValidator(board));
+        boardPositionValidator = new BoardPositionValidator(this.board);
     }
 
     @After
@@ -35,11 +35,21 @@ public class ComputerMoverTest {
         file.delete();
     }
 
+    @Test
+    public void shouldReturnFalseWhenCrossPositionGenerated() {
+        setBoardCrossOnFirstPosition();
+        assertFalse(boardPositionValidator.isValid(0, 0));
+    }
 
     @Test
-    public void shouldGenerateAnIntBetweenZeroAndTwo() {
-        int generatedInt = computerMover.generate();
-        assertTrue(generatedInt >= 0 && generatedInt <= 2);
+    public void shouldReturnFalseWhenNoughtPositionGenerated() {
+        setBoardNoughtOnFirstPosition();
+        assertFalse(boardPositionValidator.isValid(0, 0));
+    }
+
+    @Test
+    public void shouldReturnTrueWhenEmptyPositionGenerated() {
+        assertTrue(boardPositionValidator.isValid(0, 0));
     }
 
 
@@ -49,5 +59,13 @@ public class ComputerMoverTest {
             file.createNewFile();
         }
         return file;
+    }
+
+    private void setBoardCrossOnFirstPosition() {
+        this.board.setPosition(0, 0, CellSign.CROSS);
+    }
+
+    private void setBoardNoughtOnFirstPosition() {
+        this.board.setPosition(0, 0, CellSign.NOUGHT);
     }
 }

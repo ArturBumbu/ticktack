@@ -9,9 +9,11 @@ public class ComputerMover {
     private final GameBoard board;
     private int currentValidPositionForRow;
     private int currentValidPositionForCol;
+    private final BoardPositionValidator boardPositionValidator;
 
-    public ComputerMover(GameBoard board) {
+    public ComputerMover(GameBoard board, BoardPositionValidator boardPositionValidator) {
         this.board = board;
+        this.boardPositionValidator = boardPositionValidator;
     }
 
     public void move(CellSign cellSign) {
@@ -19,13 +21,9 @@ public class ComputerMover {
         while (!validPosition) {
             this.currentValidPositionForCol = generate();
             this.currentValidPositionForRow = generate();
-            validPosition = isValid(currentValidPositionForRow, currentValidPositionForCol);
+            validPosition = boardPositionValidator.isValid(currentValidPositionForRow, currentValidPositionForCol);
         }
         board.setPosition(currentValidPositionForRow, currentValidPositionForCol, cellSign);
-    }
-
-    public boolean isValid(int row, int col) {
-        return this.board.getPosition(row, col).getSign() == CellSign.EMPTY;
     }
 
 
