@@ -34,14 +34,14 @@ public class HumanPlayerTest {
     @Test
     @Ignore
     public void shouldAskUserForLocationToMove() {
-        humanPlayer.doMove(board);
+        humanPlayer.doMove();
         assertEquals("It's your turn please enter a position like [1,2]: ", inputOutputContext.read());
     }
 
     @Test
     @Ignore
     public void shouldReadUserLocationFromStream() {
-        humanPlayer.doMove(board);
+        humanPlayer.doMove();
         inputOutputContext.write("1,2");
         assertEquals("1,2", inputOutputContext.read());
     }

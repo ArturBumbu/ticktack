@@ -64,7 +64,7 @@ public class TickTackGame {
     }
 
     private void playerMove() {
-        currentPlayer.doMove(this.gameBoard);
+        currentPlayer.doMove();
     }
 
     private void gameInit() {

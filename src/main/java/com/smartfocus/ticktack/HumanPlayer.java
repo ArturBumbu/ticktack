@@ -12,20 +12,20 @@ public class HumanPlayer implements IPlayer {
         this.board = board;
     }
 
-    public void doMove(GameBoard gameBoard) {
+    public void doMove() {
         boolean isValidInput = false;
         String userPosition = null;
-        gameBoard.getContext().write("It's your turn please enter a position like [1,2]: ");
+        board.getContext().write("It's your turn please enter a position like [1,2]: ");
         while (!isValidInput) {
-            userPosition = gameBoard.getContext().read();
+            userPosition = board.getContext().read();
             isValidInput = HumanInputPositionValidator.validate(userPosition);
             if (isValidInput) {
                 break;
             } else {
-                gameBoard.getContext().write("Please enter a valid position in format 1,2: ");
+                board.getContext().write("Please enter a valid position in format 1,2: ");
             }
         }
-        setUserPosition(gameBoard, userPosition);
+        setUserPosition(board, userPosition);
     }
 
     public CellSign getSign() {

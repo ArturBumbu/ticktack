@@ -13,8 +13,8 @@ public class ComputerPlayer implements IPlayer {
         this.board = board;
     }
 
-    public void doMove(GameBoard gameBoard) {
-        new ComputerMover(gameBoard, new BoardPositionValidator(gameBoard)).move(sign);
+    public void doMove() {
+        new ComputerMover(board, new BoardPositionValidator(board)).move(sign);
     }
 
     public CellSign getSign() {
