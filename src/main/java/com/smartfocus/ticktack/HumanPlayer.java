@@ -13,9 +13,15 @@ public class HumanPlayer implements IPlayer {
     }
 
     public void doMove() {
-        boolean isValidInput = false;
         String userPosition = null;
         board.getContext().write("It's your turn please enter a position like [1,2]: ");
+        userPosition = validateTheInputNumbers(userPosition);
+        setUserPosition(board, userPosition);
+    }
+
+
+    private String validateTheInputNumbers(String userPosition) {
+        boolean isValidInput = false;
         while (!isValidInput) {
             userPosition = board.getContext().read();
             isValidInput = HumanInputPositionValidator.validate(userPosition);
@@ -25,7 +31,7 @@ public class HumanPlayer implements IPlayer {
                 board.getContext().write("Please enter a valid position in format 1,2: ");
             }
         }
-        setUserPosition(board, userPosition);
+        return userPosition;
     }
 
     public CellSign getSign() {
