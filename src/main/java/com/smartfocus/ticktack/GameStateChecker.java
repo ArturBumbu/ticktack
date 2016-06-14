@@ -11,12 +11,12 @@ public class GameStateChecker {
     }
 
     public boolean hasWon(CellSign cellSign) {
-        if (checkFirstLine(cellSign) ||
-                checkSecondLine(cellSign) ||
-                checkThirdLine(cellSign) ||
-                checkFirstColumn(cellSign) ||
-                checkSecondColumn(cellSign) ||
-                checkThirdColumn(cellSign) ||
+        if (checkLineByNumber(cellSign, 0) ||
+                checkLineByNumber(cellSign, 1) ||
+                checkLineByNumber(cellSign, 2) ||
+                checkColumnByNumber(cellSign, 0) ||
+                checkColumnByNumber(cellSign, 1) ||
+                checkColumnByNumber(cellSign, 2) ||
                 checkPrincipalDiagonal(cellSign) ||
                 checkSecondaryDiagonal(cellSign)
                 ) {
@@ -26,71 +26,17 @@ public class GameStateChecker {
         }
     }
 
-    private boolean checkFirstLine(CellSign cellSign) {
-        if (
-                this.board.getPosition(0, 0).getSign().getName().equals(cellSign.getName()) &&
-                        this.board.getPosition(0, 1).getSign().getName().equals(cellSign.getName()) &&
-                        this.board.getPosition(0, 2).getSign().getName().equals(cellSign.getName())
-                ) {
-            return true;
-        } else {
-            return false;
-        }
+    private boolean checkLineByNumber(CellSign cellSign, int line) {
+        return this.board.getPosition(line, 0).getSign().getName().equals(cellSign.getName()) &&
+                this.board.getPosition(line, 1).getSign().getName().equals(cellSign.getName()) &&
+                this.board.getPosition(line, 2).getSign().getName().equals(cellSign.getName());
     }
 
-    private boolean checkSecondLine(CellSign cellSign) {
+    private boolean checkColumnByNumber(CellSign cellSign, int column) {
         if (
-                this.board.getPosition(1, 0).getSign().getName().equals(cellSign.getName()) &&
-                        this.board.getPosition(1, 1).getSign().getName().equals(cellSign.getName()) &&
-                        this.board.getPosition(1, 2).getSign().getName().equals(cellSign.getName())
-                ) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    private boolean checkThirdLine(CellSign cellSign) {
-        if (
-                this.board.getPosition(2, 0).getSign().getName().equals(cellSign.getName()) &&
-                        this.board.getPosition(2, 1).getSign().getName().equals(cellSign.getName()) &&
-                        this.board.getPosition(2, 2).getSign().getName().equals(cellSign.getName())
-                ) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    private boolean checkFirstColumn(CellSign cellSign) {
-        if (
-                this.board.getPosition(0, 0).getSign().getName().equals(cellSign.getName()) &&
-                        this.board.getPosition(1, 0).getSign().getName().equals(cellSign.getName()) &&
-                        this.board.getPosition(2, 0).getSign().getName().equals(cellSign.getName())
-                ) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    private boolean checkSecondColumn(CellSign cellSign) {
-        if (
-                this.board.getPosition(0, 1).getSign().getName().equals(cellSign.getName()) &&
-                        this.board.getPosition(1, 1).getSign().getName().equals(cellSign.getName()) &&
-                        this.board.getPosition(2, 1).getSign().getName().equals(cellSign.getName())
-                ) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    private boolean checkThirdColumn(CellSign cellSign) {
-        if (
-                this.board.getPosition(0, 2).getSign().getName().equals(cellSign.getName()) &&
-                        this.board.getPosition(1, 2).getSign().getName().equals(cellSign.getName()) &&
-                        this.board.getPosition(2, 2).getSign().getName().equals(cellSign.getName())
+                this.board.getPosition(0, column).getSign().getName().equals(cellSign.getName()) &&
+                        this.board.getPosition(1, column).getSign().getName().equals(cellSign.getName()) &&
+                        this.board.getPosition(2, column).getSign().getName().equals(cellSign.getName())
                 ) {
             return true;
         } else {
