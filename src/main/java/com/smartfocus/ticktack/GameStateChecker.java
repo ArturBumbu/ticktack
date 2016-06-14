@@ -16,7 +16,8 @@ public class GameStateChecker {
                 checkThirdLine(cellSign) ||
                 checkFirstColumn(cellSign) ||
                 checkSecondColumn(cellSign) ||
-                checkThirdColumn(cellSign)
+                checkThirdColumn(cellSign) ||
+                checkPrincipalDiagonal(cellSign)
                 ) {
             return true;
         } else {
@@ -88,6 +89,18 @@ public class GameStateChecker {
         if (
                 this.board.getPosition(0, 2).getSign().getName().equals(cellSign.getName()) &&
                         this.board.getPosition(1, 2).getSign().getName().equals(cellSign.getName()) &&
+                        this.board.getPosition(2, 2).getSign().getName().equals(cellSign.getName())
+                ) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private boolean checkPrincipalDiagonal(CellSign cellSign) {
+        if (
+                this.board.getPosition(0, 0).getSign().getName().equals(cellSign.getName()) &&
+                        this.board.getPosition(1, 1).getSign().getName().equals(cellSign.getName()) &&
                         this.board.getPosition(2, 2).getSign().getName().equals(cellSign.getName())
                 ) {
             return true;
