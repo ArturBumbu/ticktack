@@ -1,5 +1,6 @@
 package com.smartfocus.ticktack;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import java.io.File;
@@ -18,21 +19,29 @@ public class HumanPlayerTest {
     private IPlayer humanPlayer;
     private GameBoard board;
     File file;
+    InputOutputContext inputOutputContext;
 
+    @Before
     public void setUp() throws IOException {
         file = createTestFile();
         FileInputStream inputStream = new FileInputStream(file);
         FileOutputStream fileOutputStream = new FileOutputStream(file);
-        InputOutputContext inputOutputContext = new InputOutputContext(inputStream, fileOutputStream);
+        inputOutputContext = new InputOutputContext(inputStream, fileOutputStream);
         board = new GameBoard(inputOutputContext);
         humanPlayer = new HumanPlayer();
     }
 
     @Test
     public void shouldAskUserForLocationToMove() {
-
         humanPlayer.doMove(board);
-        assertEquals("It's your turn please enter a position like: 1,2", board.getContext().read());
+        assertEquals("It's your turn please enter a position like [1,2]: ", inputOutputContext.read());
+    }
+
+    @Test
+    public void shouldReadUserLocationFromStream() {
+        humanPlayer.doMove(board);
+        inputOutputContext.write("1,2");
+        assertEquals("1,2", inputOutputContext.read());
     }
 
     private File createTestFile() throws IOException {
