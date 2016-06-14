@@ -27,16 +27,16 @@ public class GameStateChecker {
     }
 
     private boolean checkLineByNumber(CellSign cellSign, int line) {
-        return this.board.getPosition(line, 0).getSign().getName().equals(cellSign.getName()) &&
-                this.board.getPosition(line, 1).getSign().getName().equals(cellSign.getName()) &&
-                this.board.getPosition(line, 2).getSign().getName().equals(cellSign.getName());
+        return this.board.getPosition(new Position(line, 0)).getSign().getName().equals(cellSign.getName()) &&
+                this.board.getPosition(new Position(line, 1)).getSign().getName().equals(cellSign.getName()) &&
+                this.board.getPosition(new Position(line, 2)).getSign().getName().equals(cellSign.getName());
     }
 
     private boolean checkColumnByNumber(CellSign cellSign, int column) {
         if (
-                this.board.getPosition(0, column).getSign().getName().equals(cellSign.getName()) &&
-                        this.board.getPosition(1, column).getSign().getName().equals(cellSign.getName()) &&
-                        this.board.getPosition(2, column).getSign().getName().equals(cellSign.getName())
+                this.board.getPosition(new Position(0, column)).getSign().getName().equals(cellSign.getName()) &&
+                        this.board.getPosition(new Position(1, column)).getSign().getName().equals(cellSign.getName()) &&
+                        this.board.getPosition(new Position(2, column)).getSign().getName().equals(cellSign.getName())
                 ) {
             return true;
         } else {
@@ -46,9 +46,9 @@ public class GameStateChecker {
 
     private boolean checkPrincipalDiagonal(CellSign cellSign) {
         if (
-                this.board.getPosition(0, 0).getSign().getName().equals(cellSign.getName()) &&
-                        this.board.getPosition(1, 1).getSign().getName().equals(cellSign.getName()) &&
-                        this.board.getPosition(2, 2).getSign().getName().equals(cellSign.getName())
+                this.board.getPosition(new Position(0, 0)).getSign().getName().equals(cellSign.getName()) &&
+                        this.board.getPosition(new Position(1, 1)).getSign().getName().equals(cellSign.getName()) &&
+                        this.board.getPosition(new Position(2, 2)).getSign().getName().equals(cellSign.getName())
                 ) {
             return true;
         } else {
@@ -58,9 +58,9 @@ public class GameStateChecker {
 
     private boolean checkSecondaryDiagonal(CellSign cellSign) {
         if (
-                this.board.getPosition(0, 2).getSign().getName().equals(cellSign.getName()) &&
-                        this.board.getPosition(1, 1).getSign().getName().equals(cellSign.getName()) &&
-                        this.board.getPosition(2, 0).getSign().getName().equals(cellSign.getName())
+                this.board.getPosition(new Position(0, 2)).getSign().getName().equals(cellSign.getName()) &&
+                        this.board.getPosition(new Position(1, 1)).getSign().getName().equals(cellSign.getName()) &&
+                        this.board.getPosition(new Position(2, 0)).getSign().getName().equals(cellSign.getName())
                 ) {
             return true;
         } else {

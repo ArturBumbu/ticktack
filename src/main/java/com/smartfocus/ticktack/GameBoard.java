@@ -40,11 +40,11 @@ public class GameBoard {
         }
     }
 
-    public void setPosition(int row, int col, CellSign cellSign) {
-        board[row][col] = new Cell(cellSign);
+    public void setPosition(Position position, CellSign cellSign) {
+        board[position.getRow()][position.getCol()] = new Cell(cellSign);
     }
 
-    public Cell getPosition(int row, int col) {
-        return board[row][col];
+    public Cell getPosition(Position position) {
+        return board[position.getRow()][position.getCol()];
     }
 }

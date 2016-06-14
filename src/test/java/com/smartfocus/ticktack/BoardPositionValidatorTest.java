@@ -38,18 +38,18 @@ public class BoardPositionValidatorTest {
     @Test
     public void shouldReturnFalseWhenCrossPositionGenerated() {
         setBoardCrossOnFirstPosition();
-        assertFalse(boardPositionValidator.isValid(0, 0));
+        assertFalse(boardPositionValidator.isValid(new Position(0,0)));
     }
 
     @Test
     public void shouldReturnFalseWhenNoughtPositionGenerated() {
         setBoardNoughtOnFirstPosition();
-        assertFalse(boardPositionValidator.isValid(0, 0));
+        assertFalse(boardPositionValidator.isValid(new Position(0,0)));
     }
 
     @Test
     public void shouldReturnTrueWhenEmptyPositionGenerated() {
-        assertTrue(boardPositionValidator.isValid(0, 0));
+        assertTrue(boardPositionValidator.isValid(new Position(0,0)));
     }
 
 
@@ -62,10 +62,10 @@ public class BoardPositionValidatorTest {
     }
 
     private void setBoardCrossOnFirstPosition() {
-        this.board.setPosition(0, 0, CellSign.CROSS);
+        this.board.setPosition(new Position(0,0), CellSign.CROSS);
     }
 
     private void setBoardNoughtOnFirstPosition() {
-        this.board.setPosition(0, 0, CellSign.NOUGHT);
+        this.board.setPosition(new Position(0,0), CellSign.NOUGHT);
     }
 }

@@ -108,50 +108,50 @@ public class GameStateCheckerTest {
     }
 
     private void setFirstLineCompleted(CellSign cellSign) {
-        this.board.setPosition(0, 0, cellSign);
-        this.board.setPosition(0, 1, cellSign);
-        this.board.setPosition(0, 2, cellSign);
+        this.board.setPosition(new Position(0,0), cellSign);
+        this.board.setPosition(new Position(0,1), cellSign);
+        this.board.setPosition(new Position(0,2), cellSign);
     }
 
     private void setSecondLineCompleted(CellSign cellSign) {
-        this.board.setPosition(1, 0, cellSign);
-        this.board.setPosition(1, 1, cellSign);
-        this.board.setPosition(1, 2, cellSign);
+        this.board.setPosition(new Position(1,0), cellSign);
+        this.board.setPosition(new Position(1,1), cellSign);
+        this.board.setPosition(new Position(1,2), cellSign);
     }
 
     private void setThirdLineCompleted(CellSign cellSign) {
-        this.board.setPosition(2, 0, cellSign);
-        this.board.setPosition(2, 1, cellSign);
-        this.board.setPosition(2, 2, cellSign);
+        this.board.setPosition(new Position(2,0), cellSign);
+        this.board.setPosition(new Position(2,1), cellSign);
+        this.board.setPosition(new Position(2,2), cellSign);
     }
 
     private void setFirstColumnCompleted(CellSign cellSign) {
-        this.board.setPosition(0, 0, cellSign);
-        this.board.setPosition(1, 0, cellSign);
-        this.board.setPosition(2, 0, cellSign);
+        this.board.setPosition(new Position(0,0), cellSign);
+        this.board.setPosition(new Position(1,0), cellSign);
+        this.board.setPosition(new Position(2,0), cellSign);
     }
 
     private void setSecondColumnCompleted(CellSign cellSign) {
-        this.board.setPosition(0, 1, cellSign);
-        this.board.setPosition(1, 1, cellSign);
-        this.board.setPosition(2, 1, cellSign);
+        this.board.setPosition(new Position(0,1), cellSign);
+        this.board.setPosition(new Position(1,1), cellSign);
+        this.board.setPosition(new Position(2,1), cellSign);
     }
 
     private void setThirdColumnCompleted(CellSign cellSign) {
-        this.board.setPosition(0, 2, cellSign);
-        this.board.setPosition(1, 2, cellSign);
-        this.board.setPosition(2, 2, cellSign);
+        this.board.setPosition(new Position(0,2), cellSign);
+        this.board.setPosition(new Position(1,2), cellSign);
+        this.board.setPosition(new Position(2,2), cellSign);
     }
 
     private void setPrincipalDiagonalCompleted(CellSign cellSign) {
-        this.board.setPosition(0, 0, cellSign);
-        this.board.setPosition(1, 1, cellSign);
-        this.board.setPosition(2, 2, cellSign);
+        this.board.setPosition(new Position(0,0), cellSign);
+        this.board.setPosition(new Position(1,1), cellSign);
+        this.board.setPosition(new Position(2,2), cellSign);
     }
 
     private void setSecondaryDiagonalCompleted(CellSign cellSign) {
-        this.board.setPosition(0, 2, cellSign);
-        this.board.setPosition(1, 1, cellSign);
-        this.board.setPosition(2, 0, cellSign);
+        this.board.setPosition(new Position(0,2), cellSign);
+        this.board.setPosition(new Position(1,1), cellSign);
+        this.board.setPosition(new Position(2,0), cellSign);
     }
 }

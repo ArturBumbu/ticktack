@@ -7,8 +7,7 @@ import java.util.Random;
  */
 public class ComputerMover {
     private final GameBoard board;
-    private int currentValidPositionForRow;
-    private int currentValidPositionForCol;
+    private Position position;
     private final BoardPositionValidator boardPositionValidator;
 
     public ComputerMover(GameBoard board, BoardPositionValidator boardPositionValidator) {
@@ -19,11 +18,10 @@ public class ComputerMover {
     public void move(CellSign cellSign) {
         boolean validPosition = false;
         while (!validPosition) {
-            this.currentValidPositionForCol = generate();
-            this.currentValidPositionForRow = generate();
-            validPosition = boardPositionValidator.isValid(currentValidPositionForRow, currentValidPositionForCol);
+            this.position = new Position(generate(), generate());
+            validPosition = boardPositionValidator.isValid(position);
         }
-        board.setPosition(currentValidPositionForRow, currentValidPositionForCol, cellSign);
+        board.setPosition(position, cellSign);
     }
 
 

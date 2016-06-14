@@ -9,9 +9,9 @@ import java.util.List;
  * Created by arthur on 14/06/16.
  */
 public class HumanInputPositionValidator {
-    public static boolean validate(String position) {
+    public static boolean validate(String userPositionInput) {
         boolean response = false;
-        String[] numbers = position.split(",");
+        String[] numbers = userPositionInput.split(",");
 
         if (checkNumberOfInputParam(numbers)) return response;
 

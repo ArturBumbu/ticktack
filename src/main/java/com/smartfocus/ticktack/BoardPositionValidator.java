@@ -10,7 +10,7 @@ public class BoardPositionValidator {
         this.board = board;
     }
 
-    public boolean isValid(int row, int col) {
-        return this.board.getPosition(row, col).getSign() == CellSign.EMPTY;
+    public boolean isValid(Position position) {
+        return this.board.getPosition(position).getSign() == CellSign.EMPTY;
     }
 }
