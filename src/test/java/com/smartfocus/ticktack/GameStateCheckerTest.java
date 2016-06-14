@@ -94,6 +94,7 @@ public class GameStateCheckerTest {
     @Test
     public void shouldCheckIfCurrentPlayerWinBySecondaryDiagonalCompleted() {
         CellSign cellSign = CellSign.CROSS;
+        setSecondaryDiagonalCompleted(cellSign);
         boolean has_won_cross = gameStateChecker.hasWon(cellSign);
         assertTrue(has_won_cross);
     }
@@ -146,5 +147,11 @@ public class GameStateCheckerTest {
         this.board.setPosition(0, 0, cellSign);
         this.board.setPosition(1, 1, cellSign);
         this.board.setPosition(2, 2, cellSign);
+    }
+
+    private void setSecondaryDiagonalCompleted(CellSign cellSign) {
+        this.board.setPosition(0, 2, cellSign);
+        this.board.setPosition(1, 1, cellSign);
+        this.board.setPosition(2, 0, cellSign);
     }
 }
