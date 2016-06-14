@@ -28,7 +28,7 @@ public class HumanPlayerTest {
         FileOutputStream fileOutputStream = new FileOutputStream(file);
         inputOutputContext = new InputOutputContext(inputStream, fileOutputStream);
         board = new GameBoard(inputOutputContext);
-        humanPlayer = new HumanPlayer(CellSign.CROSS);
+        humanPlayer = new HumanPlayer(CellSign.CROSS, board);
     }
 
     @Test

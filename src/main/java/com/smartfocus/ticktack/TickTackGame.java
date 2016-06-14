@@ -95,11 +95,11 @@ public class TickTackGame {
 
     private void instantiatePlayers(String firstPlayerChoice) {
         if (firstPlayerChoice.equals("h")) {
-            firstPlayer = new HumanPlayer(CellSign.CROSS);
+            firstPlayer = new HumanPlayer(CellSign.CROSS,  this.gameBoard);
             secondPlayer = new ComputerPlayer(CellSign.NOUGHT, this.gameBoard);
         } else if (firstPlayerChoice.equals("c")) {
             firstPlayer = new ComputerPlayer(CellSign.NOUGHT, this.gameBoard);
-            secondPlayer = new HumanPlayer(CellSign.CROSS);
+            secondPlayer = new HumanPlayer(CellSign.CROSS,  this.gameBoard);
         }
         currentPlayer = firstPlayer;
     }

@@ -5,9 +5,11 @@ package com.smartfocus.ticktack;
  */
 public class HumanPlayer implements IPlayer {
     private final CellSign sign;
+    private final GameBoard board;
 
-    public HumanPlayer(CellSign sign) {
+    public HumanPlayer(CellSign sign, GameBoard board) {
         this.sign = sign;
+        this.board = board;
     }
 
     public void doMove(GameBoard gameBoard) {
