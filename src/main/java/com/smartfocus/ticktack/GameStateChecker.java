@@ -11,7 +11,9 @@ public class GameStateChecker {
     }
 
     public boolean hasWon(CellSign cellSign) {
-        if (checkFirstLine(cellSign) || checkSecondLine(cellSign) || checkThirdLine(cellSign)) {
+        if (checkFirstLine(cellSign) || checkSecondLine(cellSign) || checkThirdLine(cellSign) ||
+                checkFirstColumn(cellSign)
+                ){
             return true;
         } else {
             return false;
@@ -47,6 +49,18 @@ public class GameStateChecker {
                 this.board.getPosition(2, 0).getSign().getName().equals(cellSign.getName()) &&
                         this.board.getPosition(2, 1).getSign().getName().equals(cellSign.getName()) &&
                         this.board.getPosition(2, 2).getSign().getName().equals(cellSign.getName())
+                ) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private boolean checkFirstColumn(CellSign cellSign) {
+        if (
+                this.board.getPosition(0, 0).getSign().getName().equals(cellSign.getName()) &&
+                        this.board.getPosition(1, 0).getSign().getName().equals(cellSign.getName()) &&
+                        this.board.getPosition(2, 0).getSign().getName().equals(cellSign.getName())
                 ) {
             return true;
         } else {

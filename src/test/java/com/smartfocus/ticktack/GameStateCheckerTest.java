@@ -1,5 +1,6 @@
 package com.smartfocus.ticktack;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -24,6 +25,11 @@ public class GameStateCheckerTest {
         InputOutputContext inputOutputContext = new InputOutputContext(inputStream, fileOutputStream);
         this.board = new GameBoard(inputOutputContext);
         this.gameStateChecker = new GameStateChecker(board);
+    }
+
+    @After
+    public void teardown() {
+        file.delete();
     }
 
     @Test
@@ -56,6 +62,7 @@ public class GameStateCheckerTest {
     @Test
     public void shouldCheckIfCurrentPlayerWinByFirstColumnCompleted() {
         CellSign cellSign = CellSign.CROSS;
+        setFirstColumnCompleted(cellSign);
         boolean has_won_cross = gameStateChecker.hasWon(cellSign);
         assertTrue(has_won_cross);
     }
@@ -112,5 +119,11 @@ public class GameStateCheckerTest {
         this.board.setPosition(2, 0, cellSign);
         this.board.setPosition(2, 1, cellSign);
         this.board.setPosition(2, 2, cellSign);
+    }
+
+    private void setFirstColumnCompleted(CellSign cellSign) {
+        this.board.setPosition(0, 0, cellSign);
+        this.board.setPosition(1, 0, cellSign);
+        this.board.setPosition(2, 0, cellSign);
     }
 }
