@@ -11,6 +11,6 @@ public class ComputerMover {
     }
 
     public boolean isValid(int row, int col) {
-        return false;
+        return this.board.getPosition(row, col).getSign() == CellSign.EMPTY;
     }
 }

@@ -38,13 +38,28 @@ public class ComputerMoverTest {
     }
 
     @Test
-    public void shouldFindNextMovePosition() {
+    public void shouldReturnFalseWhenCrossPositionGenerated() {
         setBoardCrossOnFirstPosition();
+        assertFalse(computerMover.isValid(0, 0));
+    }
+
+    @Test
+    public void shouldReturnFalseWhenNoughtPositionGenerated() {
+        setBoardNoughtOnFirstPosition();
+        assertFalse(computerMover.isValid(0, 0));
+    }
+
+    @Test
+    public void shouldReturnTrueWhenEmptyPositionGenerated() {
         assertTrue(computerMover.isValid(0, 0));
     }
 
     private void setBoardCrossOnFirstPosition() {
         this.board.setPosition(0, 0, CellSign.CROSS);
+    }
+
+    private void setBoardNoughtOnFirstPosition() {
+        this.board.setPosition(0, 0, CellSign.NOUGHT);
     }
 
     private File createTestFile() throws IOException {
