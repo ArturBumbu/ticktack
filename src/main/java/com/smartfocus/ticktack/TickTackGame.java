@@ -35,7 +35,11 @@ public class TickTackGame {
     }
 
     private void printWinnerMessage() {
-        System.out.println("printWinnerMessage");
+        if (currentState == GameState.CROSS_WON) {
+            context.write("Human won! Bye!");
+        } else if (currentState == GameState.NOUGHT_WON) {
+            context.write("Computer won! Bye!");
+        }
     }
 
     private void checkGameState() {
