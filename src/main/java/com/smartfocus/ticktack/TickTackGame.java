@@ -31,7 +31,11 @@ public class TickTackGame {
     }
 
     private void changePlayers() {
-        System.out.println("Change Players");
+        if (context == firstPlayer) {
+            currentPlayer = secondPlayer;
+        } else if (currentPlayer == secondPlayer) {
+            currentPlayer = firstPlayer;
+        }
     }
 
     private void printWinnerMessage() {
