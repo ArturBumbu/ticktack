@@ -16,38 +16,16 @@ import static org.junit.Assert.assertTrue;
  */
 public class ComputerMoverTest {
 
-    private File file;
-    private GameBoard board;
-    ComputerMover computerMover;
+    private ComputerMover computerMover;
 
     @Before
     public void setup() throws IOException {
-        file = createTestFile();
-        FileInputStream inputStream = new FileInputStream(file);
-        FileOutputStream fileOutputStream = new FileOutputStream(file);
-        InputOutputContext inputOutputContext = new InputOutputContext(inputStream, fileOutputStream);
-        this.board = new GameBoard(inputOutputContext);
-        computerMover = new ComputerMover(this.board, new BoardPositionValidator(board));
+        computerMover = new ComputerMover(null, null);
     }
-
-    @After
-    public void teardown() {
-        file.delete();
-    }
-
 
     @Test
     public void shouldGenerateAnIntBetweenZeroAndTwo() {
         int generatedInt = computerMover.generate();
         assertTrue(generatedInt >= 0 && generatedInt <= 2);
-    }
-
-
-    private File createTestFile() throws IOException {
-        File file = new File("tmp.bin");
-        if (!file.exists()) {
-            file.createNewFile();
-        }
-        return file;
     }
 }
