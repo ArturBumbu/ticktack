@@ -5,4 +5,6 @@ package com.smartfocus.ticktack;
  */
 public interface IPlayer {
     void doMove(GameBoard gameBoard);
+
+    CellSign getSign();
 }

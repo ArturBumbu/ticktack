@@ -26,6 +26,10 @@ public class HumanPlayer implements IPlayer {
         setUserPosition(gameBoard, userPosition);
     }
 
+    public CellSign getSign() {
+        return this.sign;
+    }
+
     private void setUserPosition(GameBoard gameBoard, String userPosition) {
         String[] position = userPosition.split(",");
         gameBoard.setPosition(Integer.valueOf(position[0]), Integer.valueOf(position[1]), this.sign);

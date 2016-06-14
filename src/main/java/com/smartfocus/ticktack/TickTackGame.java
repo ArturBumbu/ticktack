@@ -13,10 +13,12 @@ public class TickTackGame {
     private GameState currentState;
     private GameBoard gameBoard;
     private final InputOutputContext context;
+    private final GameStateChecker checker;
 
     public TickTackGame(InputStream in, OutputStream out) {
         this.context = new InputOutputContext(in, out);
         this.gameBoard = new GameBoard(this.context);
+        this.checker = new GameStateChecker(this.gameBoard);
         gameInit();
         do {
             playerMove();
@@ -37,7 +39,17 @@ public class TickTackGame {
     }
 
     private void checkGameState() {
-        System.out.println("checkGameState");
+        if (checker.hasWon(currentPlayer.getSign())) {
+            changeGameStateToWinner();
+        }
+    }
+
+    private void changeGameStateToWinner() {
+        if (currentPlayer instanceof HumanPlayer) {
+            currentState = GameState.CROSS_WON;
+        } else if (currentPlayer instanceof ComputerPlayer) {
+            currentState = GameState.NOUGHT_WON;
+        }
     }
 
     private void printBoard() {
@@ -77,9 +89,9 @@ public class TickTackGame {
     private void instantiatePlayers(String firstPlayerChoice) {
         if (firstPlayerChoice.equals("h")) {
             firstPlayer = new HumanPlayer(CellSign.CROSS);
-            secondPlayer = new ComputerPlayer();
+            secondPlayer = new ComputerPlayer(CellSign.NOUGHT);
         } else if (firstPlayerChoice.equals("c")) {
-            firstPlayer = new ComputerPlayer();
+            firstPlayer = new ComputerPlayer(CellSign.NOUGHT);
             secondPlayer = new HumanPlayer(CellSign.CROSS);
         }
         currentPlayer = firstPlayer;
