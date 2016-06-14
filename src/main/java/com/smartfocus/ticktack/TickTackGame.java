@@ -26,8 +26,7 @@ public class TickTackGame {
             checkGameState();
             printWinnerMessage();
             changePlayers();
-        } while (false);
-        System.out.println("Game finished");
+        } while (currentState == GameState.PLAYING);
     }
 
     private void changePlayers() {
