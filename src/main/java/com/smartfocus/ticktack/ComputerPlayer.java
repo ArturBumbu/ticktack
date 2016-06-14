@@ -5,10 +5,12 @@ package com.smartfocus.ticktack;
  */
 public class ComputerPlayer implements IPlayer {
     private final CellSign sign;
+    private final GameBoard board;
 
 
-    public ComputerPlayer(CellSign sign) {
+    public ComputerPlayer(CellSign sign, GameBoard board) {
         this.sign = sign;
+        this.board = board;
     }
 
     public void doMove(GameBoard gameBoard) {
