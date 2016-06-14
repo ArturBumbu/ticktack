@@ -44,8 +44,8 @@ public class GameBoardTest {
         int col = 1;
         int row = 2;
         CellSign cellSign = CellSign.CROSS;
-        gameBoard.setPosition(col, row, cellSign);
-        Cell cell = gameBoard.getPosition(col, row);
+        gameBoard.setPosition(row, col, cellSign);
+        Cell cell = gameBoard.getPosition(row, col);
         assertEquals(cellSign.getName(), cell.getSign().getName());
     }
 
