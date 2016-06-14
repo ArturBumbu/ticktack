@@ -30,7 +30,7 @@ public class TickTackGame {
     }
 
     private void changePlayers() {
-        if (context == firstPlayer) {
+        if (currentPlayer == firstPlayer) {
             currentPlayer = secondPlayer;
         } else if (currentPlayer == secondPlayer) {
             currentPlayer = firstPlayer;
