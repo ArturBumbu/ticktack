@@ -48,6 +48,7 @@ public class GameStateCheckerTest {
     @Test
     public void shouldCheckIfCurrentPlayerWinByThirdCompleted() {
         CellSign cellSign = CellSign.CROSS;
+        setThirdLineCompleted(cellSign);
         boolean has_won_cross = gameStateChecker.hasWon(cellSign);
         assertTrue(has_won_cross);
     }
@@ -105,5 +106,11 @@ public class GameStateCheckerTest {
         this.board.setPosition(1, 0, cellSign);
         this.board.setPosition(1, 1, cellSign);
         this.board.setPosition(1, 2, cellSign);
+    }
+
+    private void setThirdLineCompleted(CellSign cellSign) {
+        this.board.setPosition(2, 0, cellSign);
+        this.board.setPosition(2, 1, cellSign);
+        this.board.setPosition(2, 2, cellSign);
     }
 }
