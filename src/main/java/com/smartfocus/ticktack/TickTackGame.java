@@ -11,12 +11,12 @@ public class TickTackGame {
     private IPlayer firstPlayer;
     private IPlayer secondPlayer;
     private GameState currentState;
-
+    private GameBoard gameBoard;
     private final InputOutputContext context;
 
     public TickTackGame(InputStream in, OutputStream out) {
         this.context = new InputOutputContext(in, out);
-
+        this.gameBoard = new GameBoard(this.context);
         gameInit();
         do {
             playerMove();
@@ -41,11 +41,11 @@ public class TickTackGame {
     }
 
     private void printBoard() {
-        System.out.println("printBoard");
+        this.gameBoard.printBoard();
     }
 
     private void playerMove() {
-        System.out.println("playerMove");
+        currentPlayer.doMove(this.gameBoard);
     }
 
     private void gameInit() {
@@ -76,11 +76,11 @@ public class TickTackGame {
 
     private void instantiatePlayers(String firstPlayerChoice) {
         if (firstPlayerChoice.equals("h")) {
-            firstPlayer = new HumanPlayer();
+            firstPlayer = new HumanPlayer(CellSign.CROSS);
             secondPlayer = new ComputerPlayer();
         } else if (firstPlayerChoice.equals("c")) {
             firstPlayer = new ComputerPlayer();
-            secondPlayer = new HumanPlayer();
+            secondPlayer = new HumanPlayer(CellSign.CROSS);
         }
         currentPlayer = firstPlayer;
     }

@@ -11,9 +11,11 @@ public class GameBoard {
     private final int GAME_SIZE = 3;
     private final InputOutputContext context;
     private final String DELIMITER = "|";
+    private final String LINE_SEPARATOR;
 
     public GameBoard(InputOutputContext context) {
         this.context = context;
+        this.LINE_SEPARATOR = System.getProperty("line.separator");
         board = new Cell[GAME_SIZE][GAME_SIZE];
         for (int row = 0; row < GAME_SIZE; ++row) {
             for (int col = 0; col < GAME_SIZE; ++col) {
@@ -34,7 +36,7 @@ public class GameBoard {
                     context.write(DELIMITER);
                 }
             }
-            context.write(Character.LINE_SEPARATOR);
+            context.write(LINE_SEPARATOR);
         }
     }
 
