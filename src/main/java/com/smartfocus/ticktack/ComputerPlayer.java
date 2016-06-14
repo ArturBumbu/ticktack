@@ -6,12 +6,13 @@ package com.smartfocus.ticktack;
 public class ComputerPlayer implements IPlayer {
     private final CellSign sign;
 
+
     public ComputerPlayer(CellSign sign) {
         this.sign = sign;
     }
 
     public void doMove(GameBoard gameBoard) {
-
+        new ComputerMover(gameBoard).move(sign);
     }
 
     public CellSign getSign() {

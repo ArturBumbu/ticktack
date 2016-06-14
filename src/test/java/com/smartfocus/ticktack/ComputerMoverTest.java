@@ -54,6 +54,12 @@ public class ComputerMoverTest {
         assertTrue(computerMover.isValid(0, 0));
     }
 
+    @Test
+    public void shouldGenerateAnIntBetweenZeroAndTwo() {
+        int generatedInt = computerMover.generate();
+        assertTrue(generatedInt >= 0 && generatedInt <= 2);
+    }
+
     private void setBoardCrossOnFirstPosition() {
         this.board.setPosition(0, 0, CellSign.CROSS);
     }
